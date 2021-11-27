@@ -39,7 +39,7 @@ java -jar packr_${PACKR_VERSION}.jar \
     --executable \
     OpenOSRS \
     --classpath \
-    build/libs/OpenOSRS-shaded.jar \
+    build/libs/CaseLite.jar \
     --mainclass \
     net.runelite.launcher.Launcher \
     --vmargs \
