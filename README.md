@@ -3,7 +3,7 @@
 
 This repository holds the launcher for the [Fusion client](https://github.com/Casesos/runelite).
 
-If you have any questions, please join the [Discord](https://discord.gg/openosrs) server.
+If you have any questions, please join the [Discord](https://discord.gg/UBMDQ6WjYq) server.
 
 ### License
 
