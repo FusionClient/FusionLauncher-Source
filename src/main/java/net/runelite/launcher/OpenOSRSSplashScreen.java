@@ -122,7 +122,7 @@ public class OpenOSRSSplashScreen extends JFrame
 
 				try
 				{
-					INSTANCE = new OpenOSRSSplashScreen(mode);
+	//				INSTANCE = new OpenOSRSSplashScreen(mode);
 				}
 				catch (Exception e)
 				{

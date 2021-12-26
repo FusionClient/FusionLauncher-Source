@@ -74,7 +74,7 @@ public class Launcher
 	private static final File CRASH_FILES = new File(LOGS_DIR, "jvm_crash_pid_%p.log");
 	static final String LAUNCHER_BUILD = "https://raw.githubusercontent.com/casesos/launcher/master/build.gradle.kts";
 	private static final String CLIENT_BOOTSTRAP_STAGING_URL = "https://raw.githubusercontent.com/casesos/hosting/master/bootstrap-staging.json";
-	private static final String CLIENT_BOOTSTRAP_STABLE_URL = "https://raw.githubusercontent.com/casesos/hosting/master/bootstrap-openosrs.json";
+	private static final String CLIENT_BOOTSTRAP_STABLE_URL = "https://raw.githubusercontent.com/casesos/hosting/master/bootstrap-stable.json";
 	static final String USER_AGENT = "OpenOSRS/" + LauncherProperties.getVersion();
 	private static final boolean enforceDependencyHashing = true;
 	private static boolean nightly = false;
@@ -133,9 +133,9 @@ public class Launcher
 
 		// Create typed argument for the hardware acceleration mode
 		final ArgumentAcceptingOptionSpec<HardwareAccelerationMode> mode = parser.accepts("mode")
-			.withRequiredArg()
-			.ofType(HardwareAccelerationMode.class)
-			.defaultsTo(defaultMode);
+				.withRequiredArg()
+				.ofType(HardwareAccelerationMode.class)
+				.defaultsTo(defaultMode);
 
 		OptionSet options = parser.parse(args);
 
@@ -252,7 +252,7 @@ public class Launcher
 			OpenOSRSSplashScreen.stage(.10, "Tidying the cache");
 
 			boolean launcherTooOld = bootstrap.getRequiredLauncherVersion() != null &&
-				compareVersion(bootstrap.getRequiredLauncherVersion(), LauncherProperties.getVersion()) > 0;
+					compareVersion(bootstrap.getRequiredLauncherVersion(), LauncherProperties.getVersion()) > 0;
 
 			boolean jvmTooOld = false;
 			try
@@ -260,7 +260,7 @@ public class Launcher
 				if (bootstrap.getRequiredJVMVersion() != null)
 				{
 					jvmTooOld = Runtime.Version.parse(bootstrap.getRequiredJVMVersion())
-						.compareTo(Runtime.version()) > 0;
+							.compareTo(Runtime.version()) > 0;
 				}
 			}
 			catch (IllegalArgumentException e)
@@ -278,8 +278,8 @@ public class Launcher
 			if (jvmTooOld)
 			{
 				OpenOSRSSplashScreen.setError("Your Java installation is too old", "OpenOSRS now requires Java " +
-					bootstrap.getRequiredJVMVersion() + " to run. You can get a platform specific version from openosrs.com," +
-					" or install a newer version of Java.");
+						bootstrap.getRequiredJVMVersion() + " to run. You can get a platform specific version from openosrs.com," +
+						" or install a newer version of Java.");
 				return;
 			}
 
@@ -310,8 +310,8 @@ public class Launcher
 			}
 
 			List<File> results = Arrays.stream(bootstrap.getArtifacts())
-				.map(dep -> new File(REPO_DIR, dep.getName()))
-				.collect(Collectors.toList());
+					.map(dep -> new File(REPO_DIR, dep.getName()))
+					.collect(Collectors.toList());
 
 			OpenOSRSSplashScreen.stage(.80, "Verifying");
 			try
@@ -440,8 +440,8 @@ public class Launcher
 			clientArgs = (String) options.valueOf("clientargs");
 		}
 		return !Strings.isNullOrEmpty(clientArgs)
-			? new ArrayList<>(Splitter.on(' ').omitEmptyStrings().trimResults().splitToList(clientArgs))
-			: new ArrayList<>();
+				? new ArrayList<>(Splitter.on(' ').omitEmptyStrings().trimResults().splitToList(clientArgs))
+				: new ArrayList<>();
 	}
 
 	private static void download(Bootstrap bootstrap) throws IOException
@@ -494,7 +494,7 @@ public class Launcher
 			URLConnection conn = url.openConnection();
 			conn.setRequestProperty("User-Agent", USER_AGENT);
 			try (InputStream in = conn.getInputStream();
-				FileOutputStream fout = new FileOutputStream(dest))
+			FileOutputStream fout = new FileOutputStream(dest))
 			{
 				int i;
 				byte[] buffer = new byte[1024 * 1024];
@@ -518,8 +518,8 @@ public class Launcher
 		}
 
 		Set<String> artifactNames = Arrays.stream(artifacts)
-			.map(Artifact::getName)
-			.collect(Collectors.toSet());
+				.map(Artifact::getName)
+				.collect(Collectors.toSet());
 
 		for (File file : existingFiles)
 		{
