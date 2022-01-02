@@ -7,4 +7,4 @@ If you have any questions, please join the [Discord](https://discord.gg/UBMDQ6Wj
 
 ### License
 
-OpenOSRS is [licensed under the BSD 2-clause license](https://github.com/open-osrs/launcher/blob/master/LICENSE).
+Fusion is [licensed under the BSD 2-clause license](https://github.com/Casesos/launcher/blob/master/LICENSE).
