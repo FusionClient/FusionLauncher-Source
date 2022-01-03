@@ -3,13 +3,12 @@ base: core18
 title: OpenOSRS
 version: git
 summary: Open-source OSRS client with more functionality and less restrictions
-description: |
-  Open-source OldSchool RuneScape client with more functionality and less restrictions
+description: Open-source OldSchool RuneScape client with more functionality and less restrictions
 
 type: app
 grade: stable
 confinement: strict
-icon: snap/gui/openosrs.png
+icon: snap/gui/runelite.png
 license: BSD-2-Clause
 
 parts:

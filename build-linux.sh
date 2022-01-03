@@ -7,9 +7,9 @@ JDK_BUILD="11"
 PACKR_VERSION="runelite-1.0"
 
 # Check if there's a client jar file - If there's no file the AppImage will not work but will still be built.
-if ! [ -e build/libs/OpenOSRS-shaded.jar ]
+if ! [ -e build/libs/Fusion-shaded.jar ]
 then
-  echo "build/libs/OpenOSRS-shaded.jar not found, exiting"
+  echo "build/libs/Fusion-shaded.jar not found, exiting"
   exit 1
 fi
 
@@ -44,9 +44,9 @@ java -jar packr_${PACKR_VERSION}.jar \
     --jdk \
     linux-jdk \
     --executable \
-    OpenOSRS \
+    Fusion \
     --classpath \
-    build/libs/OpenOSRS-shaded.jar \
+    build/libs/Fusion-shaded.jar \
     --mainclass \
     net.runelite.launcher.Launcher \
     --vmargs \
@@ -56,24 +56,24 @@ java -jar packr_${PACKR_VERSION}.jar \
     XX:CompileThreshold=1500 \
     Djna.nosys=true \
     --output \
-    native-linux/OpenOSRS.AppDir/ \
+    native-linux/Fusion.AppDir/ \
     --resources \
-    build/filtered-resources/openosrs.desktop \
-    appimage/openosrs.png
+    build/filtered-resources/Fusion.desktop \
+    appimage/runelite.png
 
-pushd native-linux/OpenOSRS.AppDir
+pushd native-linux/Fusion.AppDir
 mkdir -p jre/lib/amd64/server/
 ln -s ../../server/libjvm.so jre/lib/amd64/server/ # packr looks for libjvm at this hardcoded path
 popd
 
 # Symlink AppRun -> RuneLite
-pushd native-linux/OpenOSRS.AppDir/
-ln -s OpenOSRS AppRun
+pushd native-linux/Fusion.AppDir/
+ln -s Fusion AppRun
 popd
 
 curl -Lo appimagetool-x86_64.AppImage https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
 chmod 755 appimagetool-x86_64.AppImage
 
 ./appimagetool-x86_64.AppImage \
-	native-linux/OpenOSRS.AppDir/ \
-	native-linux/OpenOSRS.AppImage
+	native-linux/Fusion.AppDir/ \
+	native-linux/Fusion.AppImage

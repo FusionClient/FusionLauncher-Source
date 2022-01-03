@@ -3,7 +3,7 @@ AppName=Fusion Launcher
 AppPublisher=Fusion
 UninstallDisplayName=Fusion
 AppVersion=@project.version@
-AppSupportURL=https://openosrs.com/
+AppSupportURL=https://discord.gg/UBMDQ6WjYq
 DefaultDirName={localappdata}\Fusion
 ; vcredist queues files to be replaced at next reboot, however it doesn't seem to matter
 RestartIfNeededByRun=no
@@ -20,7 +20,7 @@ Compression=lzma2
 SolidCompression=yes
 
 OutputDir=@basedir@
-OutputBaseFilename=FusionSetup
+OutputBaseFilename=FusionClientSetup
 
 [Tasks]
 Name: DesktopIcon; Description: "Create a &desktop icon";
@@ -30,7 +30,7 @@ Source: "@basedir@\native-win64\Fusion.exe"; DestDir: "{app}"
 Source: "@basedir@\native-win64\Fusion-shaded.jar"; DestDir: "{app}"
 Source: "@basedir@\native-win64\config.json"; DestDir: "{app}"
 Source: "@basedir@\native-win64\jre\*"; DestDir: "{app}\jre"; Flags: recursesubdirs
-
+Source: "@basedir@\vcredist_x64.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 [Icons]
 ; start menu
 Name: "{userprograms}\Fusion"; Filename: "{app}\Fusion.exe"

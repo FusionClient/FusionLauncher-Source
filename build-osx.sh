@@ -44,13 +44,13 @@ java -jar packr_${PACKR_VERSION}.jar \
     --platform \
     mac \
     --icon \
-    packr/openosrs.icns \
+    packr/Fusion.icns \
     --jdk \
     osx-jdk \
     --executable \
-    OpenOSRS \
+    Fusion \
     --classpath \
-    build/libs/OpenOSRS-shaded.jar \
+    build/libs/Fusion-shaded.jar \
     --mainclass \
     net.runelite.launcher.Launcher \
     --vmargs \
@@ -60,21 +60,21 @@ java -jar packr_${PACKR_VERSION}.jar \
     XX:CompileThreshold=1500 \
     Djna.nosys=true \
     --output \
-    native-osx/OpenOSRS.app
+    native-osx/Fusion.app
 
-cp build/filtered-resources/Info.plist native-osx/OpenOSRS.app/Contents
+cp build/filtered-resources/Info.plist native-osx/Fusion.app/Contents
 
-echo Setting world execute permissions on OpenOSRS
-pushd native-osx/OpenOSRS.app
-chmod g+x,o+x Contents/MacOS/OpenOSRS
+echo Setting world execute permissions on Fusion
+pushd native-osx/Fusion.app
+chmod g+x,o+x Contents/MacOS/Fusion
 popd
 
 codesign -f -s "${SIGNING_IDENTITY}" --entitlements osx/signing.entitlements --options runtime native-osx/RuneLite.app || true
 
 # create-dmg exits with an error code due to no code signing, but is still okay
 # note we use Adam-/create-dmg as upstream does not support UDBZ
-create-dmg --format UDBZ native-osx/OpenOSRS.app.app native-osx/ || true
+create-dmg --format UDBZ native-osx/Fusion.app.app native-osx/ || true
 
-mv native-osx/OpenOSRS\ *.dmg native-osx/OpenOSRS.dmg
+mv native-osx/Fusion\ *.dmg native-osx/Fusion.dmg
 
-xcrun altool --notarize-app --username "${ALTOOL_USER}" --password "${ALTOOL_PASS}" --primary-bundle-id openosrs --file native-osx/OpenOSRS.dmg || true
+xcrun altool --notarize-app --username "${ALTOOL_USER}" --password "${ALTOOL_PASS}" --primary-bundle-id Fusion --file native-osx/Fusion.dmg || true
