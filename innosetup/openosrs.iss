@@ -2,7 +2,7 @@
 AppName=Fusion Launcher
 AppPublisher=Fusion
 UninstallDisplayName=Fusion
-AppVersion=@project.version@
+AppVersion=2.2.0
 AppSupportURL=https://discord.gg/UBMDQ6WjYq
 DefaultDirName={localappdata}\Fusion
 ; vcredist queues files to be replaced at next reboot, however it doesn't seem to matter
@@ -13,7 +13,7 @@ ExtraDiskSpaceRequired=30000000
 ArchitecturesAllowed=x64
 PrivilegesRequired=lowest
 
-SetupIconFile=@basedir@/fusion.ico
+SetupIconFile=@basedir@/RL.ico
 UninstallDisplayIcon={app}\Fusion.exe
 
 Compression=lzma2
