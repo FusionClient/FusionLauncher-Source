@@ -1,6 +1,6 @@
 name: openosrs
 base: core18
-title: OpenOSRS
+title: Fusion
 version: git
 summary: Open-source OSRS client with more functionality and less restrictions
 description: Open-source OldSchool RuneScape client with more functionality and less restrictions
@@ -8,7 +8,7 @@ description: Open-source OldSchool RuneScape client with more functionality and 
 type: app
 grade: stable
 confinement: strict
-icon: snap/gui/runelite.png
+icon: snap/gui/Fusion.png
 license: BSD-2-Clause
 
 parts:
@@ -31,8 +31,8 @@ parts:
       - libasound2-plugins
     override-pull: |
       snapcraftctl pull
-      find . -not -name 'OpenOSRS-shaded.jar' -delete
-      if [ ! -f OpenOSRS-shaded.jar ]
+      find . -not -name 'Fusion-shaded.jar' -delete
+      if [ ! -f Fusion-shaded.jar ]
       then
         echo "Run gradle prior to running snapcraft!"
         exit 1

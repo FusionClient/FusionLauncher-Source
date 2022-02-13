@@ -13,7 +13,7 @@ ExtraDiskSpaceRequired=30000000
 ArchitecturesAllowed=x64
 PrivilegesRequired=lowest
 
-SetupIconFile=@basedir@/RL.ico
+SetupIconFile=@basedir@/Fusion_logo.ico
 UninstallDisplayIcon={app}\Fusion.exe
 
 Compression=lzma2
@@ -37,6 +37,7 @@ Name: "{userprograms}\Fusion"; Filename: "{app}\Fusion.exe"
 Name: "{userdesktop}\Fusion"; Filename: "{app}\Fusion.exe"; Tasks: DesktopIcon
 
 [Run]
+Filename: "{tmp}\vcredist_x64.exe"; Check: VCRedistNeedsInstall; Parameters: "/install /quiet /norestart"; StatusMsg: "Installing VC++ 2015 (x64) Redistributables..."
 Filename: "{app}\Fusion.exe"; Description: "&Open Fusion"; Flags: postinstall skipifsilent nowait
 
 [InstallDelete]
