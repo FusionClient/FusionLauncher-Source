@@ -151,8 +151,9 @@ public class Launcher
 			}
 		}
 
+		stable |= options.has("stable");
 		nightly |= options.has("nightly");
-		staging = options.has("staging");
+
 
 		LOGS_DIR.mkdirs();
 

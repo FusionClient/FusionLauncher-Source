@@ -2,8 +2,8 @@
 
 set -e
 
-JDK_VER="11.0.4"
-JDK_BUILD="11"
+JDK_VER="11.0.8"
+JDK_BUILD="10"
 PACKR_VERSION="runelite-1.0"
 
 SIGNING_IDENTITY="Developer ID Application"
@@ -18,14 +18,14 @@ fi
 rm -f packr.jar
 curl -o packr.jar https://libgdx.badlogicgames.com/ci/packr/packr.jar
 
-echo "1647fded28d25e562811f7bce2092eb9c21d30608843b04250c023b40604ff26  OpenJDK11U-jre_x64_mac_hotspot_${JDK_VER}_${JDK_BUILD}.tar.gz" | shasum -c
+echo "b0cd349e7e428721a3bcfec619e071d25c0397e3e43b7ce22acfd7d834a8ca4b  OpenJDK11U-jre_x64_mac_hotspot_${JDK_VER}_${JDK_BUILD}.tar.gz" | shasum -c
 
 # packr requires a "jdk" and pulls the jre from it - so we have to place it inside
 # the jdk folder at jre/
 if ! [ -d osx-jdk ] ; then
     tar zxf OpenJDK11U-jre_x64_mac_hotspot_${JDK_VER}_${JDK_BUILD}.tar.gz
     mkdir osx-jdk
-    mv jdk-11.0.4+11-jre osx-jdk/jre
+    mv jdk-${JDK_VER}+${JDK_BUILD}-jre osx-jdk/jre
 
     # Move JRE out of Contents/Home/
     pushd osx-jdk/jre
@@ -38,13 +38,13 @@ if ! [ -f packr_${PACKR_VERSION}.jar ] ; then
         https://github.com/runelite/packr/releases/download/${PACKR_VERSION}/packr.jar
 fi
 
-echo "18b7cbaab4c3f9ea556f621ca42fbd0dc745a4d11e2a08f496e2c3196580cd53  packr_${PACKR_VERSION}.jar" | shasum -c
+echo "f51577b005a51331b822a18122ce08fca58cf6fee91f071d5a16354815bbe1e3  packr_${PACKR_VERSION}.jar" | shasum -c
 
 java -jar packr_${PACKR_VERSION}.jar \
     --platform \
     mac \
     --icon \
-    packr/Fusion.icns \
+    packr/openosrs.icns \
     --jdk \
     osx-jdk \
     --executable \
@@ -69,7 +69,7 @@ pushd native-osx/Fusion.app
 chmod g+x,o+x Contents/MacOS/Fusion
 popd
 
-codesign -f -s "${SIGNING_IDENTITY}" --entitlements osx/signing.entitlements --options runtime native-osx/RuneLite.app || true
+codesign -f -s "${SIGNING_IDENTITY}" --entitlements osx/signing.entitlements --options runtime native-osx/Fusion.app || true
 
 # create-dmg exits with an error code due to no code signing, but is still okay
 # note we use Adam-/create-dmg as upstream does not support UDBZ
@@ -77,4 +77,4 @@ create-dmg --format UDBZ native-osx/Fusion.app.app native-osx/ || true
 
 mv native-osx/Fusion\ *.dmg native-osx/Fusion.dmg
 
-xcrun altool --notarize-app --username "${ALTOOL_USER}" --password "${ALTOOL_PASS}" --primary-bundle-id Fusion --file native-osx/Fusion.dmg || true
+xcrun altool --notarize-app --username "${ALTOOL_USER}" --password "${ALTOOL_PASS}" --primary-bundle-id openosrs --file native-osx/Fusion.dmg || true
