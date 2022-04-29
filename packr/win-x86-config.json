@@ -1,6 +1,6 @@
 {
-  "platform": "windows64",
-  "jdk": "win64-jdk",
+  "platform": "windows32",
+  "jdk": "win32-jdk",
   "executable": "OpenOSRS",
   "classpath": [
     "build/libs/OpenOSRS-shaded.jar"
@@ -12,5 +12,5 @@
     "-Xss2m",
     "-XX:CompileThreshold=1500"
   ],
-  "output": "native-win64"
+  "output": "native-win32"
 }

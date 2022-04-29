@@ -1,11 +1,10 @@
-![](https://imgur.com/sT3duta)
-# Fusion Launcher [![Discord](https://img.shields.io/discord/903909598317121557.svg)](https://discord.gg/UBMDQ6WjYq)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCasesos%2Flauncher&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+![](https://i.imgur.com/0D5106S.png)
+# launcher [![Build Status](https://github.com/open-osrs/launcher/workflows/OpenOSRS%20-%20CI%20(push)/badge.svg)](https://github.com/open-osrs/launcher/actions?query=workflow%3A%22OpenOSRS+-+CI+%28push%29%22) [![Discord](https://img.shields.io/discord/373382904769675265.svg)](https://discord.gg/openosrs)
 
-This repository holds the launcher for the [Fusion client](https://github.com/Casesos/runelite).
+This repository holds the launcher for the [OpenOSRS client](https://github.com/open-osrs/runelite).
 
-If you have any questions, please join the [Discord](https://discord.gg/UBMDQ6WjYq) server.
+If you have any questions, please join our our [Discord](https://discord.gg/openosrs) server.
 
 ### License
 
-Fusion is [licensed under the BSD 2-clause license](https://github.com/Casesos/launcher/blob/master/LICENSE).
+OpenOSRS is [licensed under the BSD 2-clause license](https://github.com/open-osrs/launcher/blob/master/LICENSE).
