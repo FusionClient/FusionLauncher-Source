@@ -2,7 +2,7 @@
 AppName=Fusion
 AppPublisher=Fusion
 UninstallDisplayName=Fusion
-AppVersion=2.2.1
+AppVersion=3.0.0
 AppSupportURL=https://discord.gg/UBMDQ6WjYq
 DefaultDirName={localappdata}\Fusion
 ; vcredist queues files to be replaced at next reboot, however it doesn't seem to matter

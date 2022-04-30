@@ -58,14 +58,14 @@ class InfoPanel extends JPanel
 {
 	private static final Color DARK_GREY = new Color(10, 10, 10, 255);
 
-	private static final BufferedImage TRANSPARENT_LOGO = ImageUtil.getResourceStreamFromClass(InfoPanel.class, "openosrs.png");
+	private static final BufferedImage TRANSPARENT_LOGO = ImageUtil.getResourceStreamFromClass(InfoPanel.class, "Fusion_Icon1.png");
 	static final Dimension PANEL_SIZE = new Dimension(200, OpenOSRSSplashScreen.FRAME_SIZE.height);
 
 	private static final Dimension VERSION_SIZE = new Dimension(PANEL_SIZE.width, 25);
 
 	private static final String TROUBLESHOOTING_URL = "https://github.com/runelite/runelite/wiki/Troubleshooting-problems-with-the-client";
-	private static final String DISCORD_INVITE_LINK = "https://discordapp.com/invite/openosrs";
-	private static final String LAUNCHER_DOWNLOAD_LINK = "https://github.com/open-osrs/launcher/releases";
+	private static final String DISCORD_INVITE_LINK = "https://discord.gg/6d49DkJbU5";
+	private static final String LAUNCHER_DOWNLOAD_LINK = "https://discord.gg/yxRYFdg7Eg";
 
 	InfoPanel(String mode)
 	{

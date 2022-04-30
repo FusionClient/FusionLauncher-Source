@@ -3,7 +3,7 @@
   "jdk": "win64-jdk",
   "executable": "Fusion",
   "classpath": [
-    "build/libs/OpenOSRS-shaded.jar"
+    "build/libs/Fusion-shaded.jar"
   ],
   "mainclass": "net.runelite.launcher.Launcher",
   "vmargs": [

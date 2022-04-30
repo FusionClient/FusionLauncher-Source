@@ -76,14 +76,13 @@ public class Launcher
 	private static final File REPO_DIR = new File(FUSION_DIR, "repository2");
 	public static final File CRASH_FILES = new File(LOGS_DIR, "jvm_crash_pid_%p.log");
 	static final String LAUNCHER_BUILD = "https://raw.githubusercontent.com/open-osrs/launcher/master/build.gradle.kts";
-//	private static final String CLIENT_BOOTSTRAP_STAGING_URL = "https://raw.githubusercontent.com/open-osrs/hosting/master/bootstrap-staging.json";
-//	private static final String CLIENT_BOOTSTRAP_NIGHTLY_URL = "https://raw.githubusercontent.com/open-osrs/hosting/master/bootstrap-nightly.json";
+	private static final String CLIENT_BOOTSTRAP_STAGING_URL = "https://raw.githubusercontent.com/Casesos/hosting/master/bootstrap-staging.json";
+	private static final String CLIENT_BOOTSTRAP_NIGHTLY_URL = "https://raw.githubusercontent.com/Casesos/hosting/master/bootstrap-nightly.json";
 	private static final String CLIENT_BOOTSTRAP_STABLE_URL = "https://raw.githubusercontent.com/Casesos/hosting/master/bootstrap-stable.json";
 	static final String USER_AGENT = "OpenOSRS/" + LauncherProperties.getVersion();
-	//private static boolean nightly = false;
-	//private static boolean staging = false;
-	private static boolean stable = true;
-
+	private static boolean nightly = false;
+	private static boolean staging = false;
+	private static boolean stable = false;
 	static final String CLIENT_MAIN_CLASS = "net.runelite.client.RuneLite";
 
 	public static void main(String[] args)
@@ -184,14 +183,14 @@ public class Launcher
 			{
 				stable = true;
 			}
-			/*else if (bootstrapMode.equals("NIGHTLY"))
+			else if (bootstrapMode.equals("NIGHTLY"))
 			{
 				nightly = true;
-			} */
+			}
 		}
 
-//		nightly |= options.has("nightly");
-//		staging = options.has("staging");
+		nightly |= options.has("nightly");
+		staging = options.has("staging");
 		stable |= options.has("stable");
 
 		// Setup debug
@@ -204,7 +203,7 @@ public class Launcher
 			logger.setLevel(Level.DEBUG);
 		}
 
-	//	if (!nightly && !staging && !stable)
+		if (!nightly && !staging && !stable)
 		{
 			OpenOSRSSplashScreen.init(null);
 			OpenOSRSSplashScreen.barMessage(null);
@@ -224,7 +223,7 @@ public class Launcher
 
 				buttons.get(1).addActionListener(e ->
 				{
-					//nightly = true;
+					nightly = true;
 					OpenOSRSSplashScreen.close();
 					Runnable task = () -> launch(hardwareAccelerationMode, options, prop);
 					Thread thread = new Thread(task);
@@ -232,7 +231,7 @@ public class Launcher
 				});
 			}
 		}
-	//	else
+		else
 		{
 			launch(hardwareAccelerationMode, options, prop);
 		}
@@ -249,7 +248,7 @@ public class Launcher
 		{
 			OpenOSRSSplashScreen.stage(0, "Setting up environment");
 
-			log.info("OpenOSRS Launcher version {}", LauncherProperties.getVersion());
+			log.info("Fusion Launcher version {}", LauncherProperties.getVersion());
 
 			final List<String> jvmProps = new ArrayList<>();
 			if (options.has("scale"))
@@ -374,7 +373,7 @@ public class Launcher
 			}
 			if (jvmTooOld)
 			{
-				OpenOSRSSplashScreen.setError("Your Java installation is too old", "OpenOSRS now requires Java " +
+				OpenOSRSSplashScreen.setError("Your Java installation is too old", "Fusion now requires Java " +
 						bootstrap.getRequiredJVMVersion() + " to run. You can get a platform specific version from openosrs.com," +
 						" or install a newer version of Java.");
 				return;
@@ -534,14 +533,14 @@ public class Launcher
 		{
 			u = new URL(CLIENT_BOOTSTRAP_STABLE_URL);
 		}
-/*		else if (nightly)
+		else if (nightly)
 		{
 			u = new URL(CLIENT_BOOTSTRAP_NIGHTLY_URL);
 		}
 		else if (staging)
 		{
 			u = new URL(CLIENT_BOOTSTRAP_STAGING_URL);
-		} */
+		}
 		else
 		{
 			throw new RuntimeException("How did we get here?");
