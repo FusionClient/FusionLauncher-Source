@@ -102,7 +102,7 @@ class MessagePanel extends JPanel
 		this.add(scrollPane, c);
 		c.gridy++;
 
-		bootstrapChannel = messageArea("Do you want to make use of the stable or the nightly update channel?");
+		bootstrapChannel = messageArea("Do you want to run the client with your .runelite or .fusion settings?");
 
 		this.add(bootstrapChannel, c);
 		c.gridy++;
@@ -113,10 +113,13 @@ class MessagePanel extends JPanel
 		buttonPanel.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		buttonPanel.setOpaque(true);
 
-		stableBtn = addButton("Stable", "The Stable option isn't the most up-to-date build, it will use the most stable OpenOSRS build.");
+		//stableBtn = addButton("Stable", "The Stable option isn't the most up-to-date build, it will use the most stable Fusion build.");
+		stableBtn = addButton(".fusion", "The .fusion option runs the settings via .fusion folder.");
+
 		buttonPanel.add(stableBtn);
 
-		nightlyBtn = addButton("Nightly", "The Nightly option is the most up-to-date build, it will use the latest OpenOSRS build which is built each night.");
+		//nightlyBtn = addButton("Nightly", "The Nightly option is the most up-to-date build, it will use the latest Fusion build which is built each night.");
+		nightlyBtn = addButton(".runelite", "The .runelite option runs the settings via .runelite folder.");
 		buttonPanel.add(nightlyBtn);
 
 		bootstrapChannel.setVisible(false);

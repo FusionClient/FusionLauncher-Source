@@ -96,7 +96,7 @@ public class Launcher
 		parser.accepts("insecure-skip-tls-verification", "Disable TLS certificate and hostname verification");
 		parser.accepts("use-jre-truststore", "Use JRE cacerts truststore instead of the Windows Trusted Root Certificate Authorities (only on Windows)");
 		parser.accepts("scale", "Custom scale factor for Java 2D").withRequiredArg();
-//		parser.accepts("nightly");
+		parser.accepts("nightly");
 //		parser.accepts("staging");
 		parser.accepts("stable");
 		parser.accepts("help", "Show this text (use --clientargs --help for client help)").forHelp();
@@ -242,7 +242,7 @@ public class Launcher
 		// RTSS triggers off of the CreateWindow event, so this needs to be in place early, prior to splash screen
 		initDllBlacklist();
 
-		//OpenOSRSSplashScreen.init(nightly ? "Nightly" : stable ? "Stable" : "Staging");
+		OpenOSRSSplashScreen.init(nightly ? "RuneLite" : stable ? "Fusion" : "Staging");
 
 		try
 		{

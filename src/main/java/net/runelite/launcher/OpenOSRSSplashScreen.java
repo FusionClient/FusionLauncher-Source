@@ -52,7 +52,7 @@ public class OpenOSRSSplashScreen extends JFrame
 		this.setSize(FRAME_SIZE);
 		this.setLayout(new BorderLayout());
 		this.setUndecorated(true);
-		this.setIconImage(ImageUtil.getResourceStreamFromClass(OpenOSRSSplashScreen.class, "Fusion_Icon.png"));
+		this.setIconImage(ImageUtil.getResourceStreamFromClass(OpenOSRSSplashScreen.class, "Fusion_Icon1.png"));
 
 		final JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());

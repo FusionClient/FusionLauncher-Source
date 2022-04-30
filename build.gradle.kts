@@ -21,7 +21,7 @@ plugins {
 
 group = "com.openosrs"
 version = "3.0.0"
-description = "OpenOSRS Launcher"
+description = "Fusion Launcher"
 
 repositories {
     mavenLocal()
