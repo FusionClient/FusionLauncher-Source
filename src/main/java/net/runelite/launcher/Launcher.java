@@ -71,18 +71,18 @@ import org.slf4j.LoggerFactory;
 @Slf4j
 public class Launcher
 {
-	private static final File OPENOSRS_DIR = new File(System.getProperty("user.home"), ".openosrs");
-	public static final File LOGS_DIR = new File(OPENOSRS_DIR, "logs");
-	private static final File REPO_DIR = new File(OPENOSRS_DIR, "repository2");
+	private static final File FUSION_DIR = new File(System.getProperty("user.home"), ".fusion");
+	public static final File LOGS_DIR = new File(FUSION_DIR, "logs");
+	private static final File REPO_DIR = new File(FUSION_DIR, "repository2");
 	public static final File CRASH_FILES = new File(LOGS_DIR, "jvm_crash_pid_%p.log");
 	static final String LAUNCHER_BUILD = "https://raw.githubusercontent.com/open-osrs/launcher/master/build.gradle.kts";
-	private static final String CLIENT_BOOTSTRAP_STAGING_URL = "https://raw.githubusercontent.com/open-osrs/hosting/master/bootstrap-staging.json";
-	private static final String CLIENT_BOOTSTRAP_NIGHTLY_URL = "https://raw.githubusercontent.com/open-osrs/hosting/master/bootstrap-nightly.json";
-	private static final String CLIENT_BOOTSTRAP_STABLE_URL = "https://raw.githubusercontent.com/open-osrs/hosting/master/bootstrap-stable.json";
+//	private static final String CLIENT_BOOTSTRAP_STAGING_URL = "https://raw.githubusercontent.com/open-osrs/hosting/master/bootstrap-staging.json";
+//	private static final String CLIENT_BOOTSTRAP_NIGHTLY_URL = "https://raw.githubusercontent.com/open-osrs/hosting/master/bootstrap-nightly.json";
+	private static final String CLIENT_BOOTSTRAP_STABLE_URL = "https://raw.githubusercontent.com/Casesos/hosting/master/bootstrap-stable.json";
 	static final String USER_AGENT = "OpenOSRS/" + LauncherProperties.getVersion();
-	private static boolean nightly = false;
-	private static boolean staging = false;
-	private static boolean stable = false;
+	//private static boolean nightly = false;
+	//private static boolean staging = false;
+	private static boolean stable = true;
 
 	static final String CLIENT_MAIN_CLASS = "net.runelite.client.RuneLite";
 
@@ -97,8 +97,8 @@ public class Launcher
 		parser.accepts("insecure-skip-tls-verification", "Disable TLS certificate and hostname verification");
 		parser.accepts("use-jre-truststore", "Use JRE cacerts truststore instead of the Windows Trusted Root Certificate Authorities (only on Windows)");
 		parser.accepts("scale", "Custom scale factor for Java 2D").withRequiredArg();
-		parser.accepts("nightly");
-		parser.accepts("staging");
+//		parser.accepts("nightly");
+//		parser.accepts("staging");
 		parser.accepts("stable");
 		parser.accepts("help", "Show this text (use --clientargs --help for client help)").forHelp();
 
@@ -112,7 +112,7 @@ public class Launcher
 
 		try
 		{
-			prop.load(new FileInputStream(new File(OPENOSRS_DIR, "settings.properties")));
+			prop.load(new FileInputStream(new File(FUSION_DIR, "settings.properties")));
 		}
 		catch (IOException ignored)
 		{
@@ -184,14 +184,14 @@ public class Launcher
 			{
 				stable = true;
 			}
-			else if (bootstrapMode.equals("NIGHTLY"))
+			/*else if (bootstrapMode.equals("NIGHTLY"))
 			{
 				nightly = true;
-			}
+			} */
 		}
 
-		nightly |= options.has("nightly");
-		staging = options.has("staging");
+//		nightly |= options.has("nightly");
+//		staging = options.has("staging");
 		stable |= options.has("stable");
 
 		// Setup debug
@@ -204,7 +204,7 @@ public class Launcher
 			logger.setLevel(Level.DEBUG);
 		}
 
-		if (!nightly && !staging && !stable)
+	//	if (!nightly && !staging && !stable)
 		{
 			OpenOSRSSplashScreen.init(null);
 			OpenOSRSSplashScreen.barMessage(null);
@@ -224,7 +224,7 @@ public class Launcher
 
 				buttons.get(1).addActionListener(e ->
 				{
-					nightly = true;
+					//nightly = true;
 					OpenOSRSSplashScreen.close();
 					Runnable task = () -> launch(hardwareAccelerationMode, options, prop);
 					Thread thread = new Thread(task);
@@ -232,7 +232,7 @@ public class Launcher
 				});
 			}
 		}
-		else
+	//	else
 		{
 			launch(hardwareAccelerationMode, options, prop);
 		}
@@ -243,7 +243,7 @@ public class Launcher
 		// RTSS triggers off of the CreateWindow event, so this needs to be in place early, prior to splash screen
 		initDllBlacklist();
 
-		OpenOSRSSplashScreen.init(nightly ? "Nightly" : stable ? "Stable" : "Staging");
+		//OpenOSRSSplashScreen.init(nightly ? "Nightly" : stable ? "Stable" : "Staging");
 
 		try
 		{
@@ -534,14 +534,14 @@ public class Launcher
 		{
 			u = new URL(CLIENT_BOOTSTRAP_STABLE_URL);
 		}
-		else if (nightly)
+/*		else if (nightly)
 		{
 			u = new URL(CLIENT_BOOTSTRAP_NIGHTLY_URL);
 		}
 		else if (staging)
 		{
 			u = new URL(CLIENT_BOOTSTRAP_STAGING_URL);
-		}
+		} */
 		else
 		{
 			throw new RuntimeException("How did we get here?");

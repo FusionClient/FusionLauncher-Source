@@ -53,7 +53,7 @@ class MessagePanel extends JPanel
 	private static final Dimension BAR_SIZE = new Dimension(PANEL_SIZE.width, 30);
 	private static final int MESSAGE_AREA_PADDING = 15;
 
-	private final JLabel titleLabel = new JLabel("Welcome to OpenOSRS");
+	private final JLabel titleLabel = new JLabel("Welcome to Fusion");
 	private final JLabel messageArea;
 	private final JLabel bootstrapChannel;
 	private final JLabel barLabel = new JLabel("Doing something important");

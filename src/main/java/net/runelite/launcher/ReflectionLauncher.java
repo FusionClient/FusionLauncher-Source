@@ -69,7 +69,7 @@ class ReflectionLauncher
 				}
 			}
 		};
-		thread.setName("OpenOSRS");
+		thread.setName("Fusion");
 		thread.start();
 
 		OpenOSRSSplashScreen.close();

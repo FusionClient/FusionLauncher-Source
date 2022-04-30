@@ -1,7 +1,7 @@
 {
   "platform": "windows64",
   "jdk": "win64-jdk",
-  "executable": "OpenOSRS",
+  "executable": "Fusion",
   "classpath": [
     "build/libs/OpenOSRS-shaded.jar"
   ],
